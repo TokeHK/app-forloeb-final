@@ -1,5 +1,5 @@
 export interface DataType {
-  _id: number;
+  _id: string; 
   name: string;
   frontImg: string;
   subpageImg: string;
@@ -8,11 +8,11 @@ export interface DataType {
   header: string;
   text1: string;
   text2: string;
-  text3: string | TextArray[];
+  text3: string | TextArray[]; 
   bg: string;
 }
 
 export interface TextArray {
-  img:string,
-  email:string
+  img: string;
+  email: string;
 }

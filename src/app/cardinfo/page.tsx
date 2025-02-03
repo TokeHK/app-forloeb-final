@@ -2,10 +2,10 @@ import React from 'react'
 import styles from "@/app/page.module.css"
 import Image from "next/image"
 import { getById } from './data'
-import { TextArray } from '../types/type'
+import { TextArray, DataType } from '../types/type'
 
 interface PageProps {
-  searchParams:Promise<{id: string}>
+  searchParams: Promise<{ id: string }>;
 }
 
 const Page = async (props:PageProps) => {
