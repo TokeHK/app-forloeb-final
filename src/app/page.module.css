@@ -13,13 +13,14 @@
   max-width: 600px;
   margin-inline: auto;
   & > :first-child {
-    margin-left: -1rem;
+    margin-left: -3rem;
   }
   & span {
     place-self: end;
     color: white;
     background-color: black;
     padding: .2rem 1rem;
+    margin-right: -1.8rem;
   }
 }
 
