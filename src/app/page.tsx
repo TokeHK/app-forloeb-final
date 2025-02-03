@@ -1,10 +1,10 @@
 "use client"
 
-import styles from "./page.module.css";
-import { allData } from "./data";
-import Card from "./components/Card";
 import { useEffect, useState } from "react";
+import styles from "./page.module.css";
 import Image from "next/image";
+import Card from "./components/Card";
+import { allData } from "./data";
 import { DataType } from "./types/type";
 
 export default function Home() {

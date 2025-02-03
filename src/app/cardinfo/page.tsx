@@ -2,26 +2,16 @@ import React from 'react'
 import styles from "@/app/page.module.css"
 import Image from "next/image"
 import { getById } from './data'
-
+import { TextArray } from '../types/type'
 
 interface PageProps {
   searchParams:Promise<{id: string}>
-}
-
-interface TextArray {
-  img:string,
-  email:string
 }
 
 const Page = async (props:PageProps) => {
 
   const {id} = await props.searchParams;
   const data = await getById(id);
-
-/*   const id = props.searchParams.id;
-  const data = await getById(id); */
-
-  const isText3Array = Array.isArray(data.text3);
 
   return (
     <div className={styles.subpage}>
@@ -33,9 +23,9 @@ const Page = async (props:PageProps) => {
             <p>{data.text1}</p>
             <p>{data.text2}</p>
 
-             {isText3Array ? (
+            {Array.isArray(data.text3) ? (
               <ul>
-                {data.text3.map((item:TextArray, index:number) => (
+                {data.text3.map((item: TextArray, index:number) => (
                   <li key={data.name + index}>
                     <Image src={`/${item.img}`} alt={item.email} width={200} height={200} />
                     <a href={`mailto:${item.email}`}>{item.email}</a>
