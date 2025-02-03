@@ -1,9 +1,52 @@
 .fp {
-
+  min-height: 100vh;
+  background: linear-gradient(to bottom, white, rgb(188, 188, 255));
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media screen and (max-width:768px) {
-  .fp {
-    
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  margin-inline: auto;
+  & > :first-child {
+    margin-left: -1rem;
+  }
+  & span {
+    place-self: end;
+    color: white;
+    background-color: black;
+    padding: .2rem 1rem;
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.logo {
+  width: 150px;
+}
+
+.subpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.subpageCard {
+  display: flex;
+  max-width: 900px;
+  justify-content: center;
+  height: 60%;
+  & img {
+    max-height: 80vh;
+    object-fit: contain;
   }
 }

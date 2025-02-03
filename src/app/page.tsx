@@ -1,10 +1,10 @@
 "use client"
 
-/* import Image from "next/image"; */
 import styles from "./page.module.css";
 import { allData } from "./data";
-/* import Card from "./components/Card"; */
+import Card from "./components/Card";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Home() {
 
@@ -20,8 +20,6 @@ export default function Home() {
         
         const jsonData = await allData();
         setMyData(jsonData);
-        console.log(myData)
-
       } catch (error){
         console.log("Error fetching data: ", error);
       } finally {
@@ -32,10 +30,19 @@ export default function Home() {
     } )()
   },[])
 
-
   return (
     <section className={styles.fp}>
-      {myData}
+    
+      <div className={styles.centered}>
+        <Image priority src={"/logo/logo-final.png"} alt="" width={100} height={100} className={styles.logo}/>
+          <section className={styles.cards}>
+            {myData &&
+            myData.map((item: any) => (
+              <Card key={item._id} data={item} />
+            ))}
+          </section>
+          <span>And yet... more to come</span>
+      </div>
     </section>
   );
 }
