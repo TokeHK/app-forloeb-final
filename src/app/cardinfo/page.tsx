@@ -31,7 +31,7 @@ const Page = async (props:RouterParams) => {
 
              {isText3Array ? (
               <ul>
-                {data.text3.map((item:TextArray, index:Number) => (
+                {data.text3.map((item:TextArray, index:number) => (
                   <li key={data.name + index}>
                     <Image src={`/${item.img}`} alt={item.email} width={200} height={200} />
                     <a href={`mailto:${item.email}`}>{item.email}</a>

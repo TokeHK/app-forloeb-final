@@ -5,10 +5,11 @@ import { allData } from "./data";
 import Card from "./components/Card";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { DataType } from "./types/type";
 
 export default function Home() {
 
-  const [myData, setMyData] = useState<any>();
+  const [myData, setMyData] = useState<DataType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect( ()=>{
@@ -36,8 +37,8 @@ export default function Home() {
       <div className={styles.centered}>
         <Image priority src={"/logo/logo-final.png"} alt="" width={100} height={100} className={styles.logo}/>
           <section className={styles.cards}>
-            {myData &&
-            myData.map((item: any) => (
+            {myData.length > 0 &&
+            myData.map((item: DataType) => (
               <Card key={item._id} data={item} />
             ))}
           </section>

@@ -2,9 +2,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Card.module.css"
+import { DataType } from "../types/type";
 
 interface Props {
-  data:any
+  data: DataType
 }
 
 const Card = (props:Props) => {
