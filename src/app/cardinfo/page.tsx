@@ -3,19 +3,23 @@ import styles from "@/app/page.module.css"
 import Image from "next/image"
 import { getById } from './data'
 
-type RouterParams = {
-  searchParams : {
-    id : string
-  }
+
+interface PageProps {
+  searchParams:Promise<{id: string}>
 }
+
 interface TextArray {
   img:string,
   email:string
 }
 
-const Page = async (props:RouterParams) => {
-  const id = props.searchParams.id;
+const Page = async (props:PageProps) => {
+
+  const {id} = await props.searchParams;
   const data = await getById(id);
+
+/*   const id = props.searchParams.id;
+  const data = await getById(id); */
 
   const isText3Array = Array.isArray(data.text3);
 
