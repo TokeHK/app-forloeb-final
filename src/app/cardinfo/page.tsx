@@ -23,7 +23,7 @@ const Page = async (props:PageProps) => {
             <p>{data.text1}</p>
             <p>{data.text2}</p>
 
-            {Array.isArray(data.text3) ? (
+            {Array.isArray(data.text3) ? (//check om text3 er et array, og så map ellers gå ned til <p>
               <ul>
                 {data.text3.map((item: TextArray, index:number) => (
                   <li key={data.name + index}>
