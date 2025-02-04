@@ -6,8 +6,13 @@ import Image from "next/image";
 import Card from "./components/Card";
 import { allData } from "./data";
 import { DataType } from "./types/type";
+import useWindowWidth from "@/app/hooks/useWindowWidth"
 
+  
 export default function Home() {
+
+  const width = useWindowWidth();
+  const breakPoint = 768;
 
   const [myData, setMyData] = useState<DataType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -40,16 +45,26 @@ export default function Home() {
   return (
     <section className={styles.fp}>
     
-      <div className={styles.centered}>
-        <Image priority src={"/logo/logo-final.png"} alt="" width={100} height={100} className={styles.logo}/>
-          <section className={styles.cards}>
-            {myData.length > 0 &&
-            myData.map((item: DataType) => (
-              <Card key={item._id} data={item} />
-            ))}
-          </section>
-          <span>And yet... more to come</span>
+    {width < breakPoint ? 
+      <div>
+
       </div>
+    
+    : //¤breakpoint til desktop
+    
+      <div>
+        <div className={styles.centered}>
+          <Image priority src={"/logo/logo-final.png"} alt="" width={100} height={100} className={styles.logo}/>
+            <section className={styles.cards}>
+              {myData.length > 0 &&
+              myData.map((item: DataType) => (
+                <Card key={item._id} data={item} />
+              ))}
+            </section>
+          <span>And yet... more to come</span>
+        </div>
+      </div>
+    }
     </section>
   );
 }

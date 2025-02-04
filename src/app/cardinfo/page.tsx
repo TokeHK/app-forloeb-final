@@ -14,7 +14,7 @@ const Page = async (props:PageProps) => {
   const data = await getById(id);
 
   return (
-    <div className={styles.subpage}>
+    <div className={styles.subpage} style={{backgroundColor:`${data.bg}`}}>
       {data && 
         <div className={styles.subpageCard}>
           <Image src={`/${data.subpageImg}`} alt={data.desc} width={100} height={100} />
@@ -24,9 +24,9 @@ const Page = async (props:PageProps) => {
             <p>{data.text2}</p>
 
             {Array.isArray(data.text3) ? (//check om text3 er et array, og så map ellers gå ned til <p>
-              <ul>
+              <ul className={styles.subContact} style={{}}>
                 {data.text3.map((item: TextArray, index:number) => (
-                  <li key={data.name + index}>
+                  <li key={data.name + index} id={`contact-${data._id}`}>
                     <Image src={`/${item.img}`} alt={item.email} width={200} height={200} />
                     <a href={`mailto:${item.email}`}>{item.email}</a>
                   </li>
@@ -35,6 +35,7 @@ const Page = async (props:PageProps) => {
             ) : (
               <p>{data.text3}</p>
             )}
+            <span className={styles.subName}>{data.name}</span>
           </div>
         </div>
       }
