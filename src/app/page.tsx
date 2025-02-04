@@ -16,30 +16,33 @@ export default function Home() {
 
   const [myData, setMyData] = useState<DataType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect( ()=>{
 
-    //self invoked async function
-    ( async ()=>{
-      
+    const fetchData = async () => {
       try {
-        
         const jsonData = await allData();
         setMyData(jsonData);
-      } catch (error){
+      } catch (error) {
         console.log("Error fetching data: ", error);
+        setError('Failed to fetch data'); // Set error message
       } finally {
-
         setLoading(false);
       }
+    };
 
-    } )()
-  },[])
+    // Only call fetchData client-side
+    fetchData();
+  }, []);
   
   if (loading === true) {
     return(
       <>Loading...</>
     )
+  }
+  if (error) {
+    return <div>{error}</div>;
   }
 
   return (
