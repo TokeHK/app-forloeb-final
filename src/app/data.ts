@@ -2,7 +2,7 @@ import { DataType } from "./types/type";
 
 export const allData = async (): Promise<DataType[]> => {
   try {
-    const res = await fetch('https://final-node-server.vercel.app/getAlldata');
+    const res = await fetch('https://final-node-server.vercel.app/getAllData');
 
     if (!res.ok) {
       throw new Error(`Failed to fetch data. Status: ${res.statusText}`);
