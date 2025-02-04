@@ -51,16 +51,16 @@ export default function Home() {
         <div className={styles.centered}>
           <Image priority src={"/logo/logo-final.png"} alt="" width={100} height={100} className={styles.logo}/>
             <section className={styles.cards}>
-              {myData.length > 0 &&
+            {myData.length > 0 ? (
               myData.map((item: DataType) => (
                 <div key={item._id}>
-                {width < breakPoint ? 
-                <CardMobile data={item} />
-                :
-                <Card data={item} />
-                }
+                  {width < breakPoint ? <CardMobile data={item} /> : <Card data={item} />}
                 </div>
-              ))}
+                ))
+              ) : (
+                <p>No data available</p>
+              )}
+
             </section>
           <span>And yet... more to come</span>
         </div>
