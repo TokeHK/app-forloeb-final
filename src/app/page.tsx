@@ -30,6 +30,12 @@ export default function Home() {
 
     } )()
   },[])
+  
+  if (loading === true) {
+    return(
+      <>Loading...</>
+    )
+  }
 
   return (
     <section className={styles.fp}>

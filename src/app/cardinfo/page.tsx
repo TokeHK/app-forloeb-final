@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "@/app/page.module.css"
 import Image from "next/image"
 import { getById } from './data'
-import { TextArray, DataType } from '../types/type'
+import { TextArray } from '../types/type'
 
 interface PageProps {
   searchParams: Promise<{ id: string }>;
