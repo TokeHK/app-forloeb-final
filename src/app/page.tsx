@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Card from "./components/Card";
+import CardMobile from "./components/CardMobile";
 import { allData } from "./data";
 import { DataType } from "./types/type";
 import useWindowWidth from "@/app/hooks/useWindowWidth"
@@ -26,13 +27,12 @@ export default function Home() {
         setMyData(jsonData);
       } catch (error) {
         console.log("Error fetching data: ", error);
-        setError('Failed to fetch data'); // Set error message
+        setError('Failed to fetch data');
       } finally {
         setLoading(false);
       }
     };
 
-    // Only call fetchData client-side
     fetchData();
   }, []);
   
@@ -47,27 +47,25 @@ export default function Home() {
 
   return (
     <section className={styles.fp}>
-    
-    {width < breakPoint ? 
-      <div>
-
-      </div>
-    
-    : //¤breakpoint til desktop
-    
       <div>
         <div className={styles.centered}>
           <Image priority src={"/logo/logo-final.png"} alt="" width={100} height={100} className={styles.logo}/>
             <section className={styles.cards}>
               {myData.length > 0 &&
               myData.map((item: DataType) => (
-                <Card key={item._id} data={item} />
+                <div key={item._id}>
+                {width < breakPoint ? 
+                <CardMobile data={item} />
+                :
+                <Card data={item} />
+                }
+                </div>
               ))}
             </section>
           <span>And yet... more to come</span>
         </div>
       </div>
-    }
+    
     </section>
   );
 }

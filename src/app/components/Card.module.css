@@ -1,5 +1,15 @@
 .card {
   & img {
     width: 200px;
+    border-radius: 6px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+    & img {
+      width: 400px;
+    }
   }
 }

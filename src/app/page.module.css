@@ -31,6 +31,7 @@
   align-items: center;
   gap: 2rem;
 }
+
 .logo {
   width: 150px;
 }
@@ -90,4 +91,50 @@
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+
+@media screen and (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+  }
+  .centered {
+    & > :first-child {
+      margin-left: -1.2rem;
+    }
+    & > :last-child {
+      margin-right: 0;
+    }
+  }
+
+  .subpageCard {
+    flex-direction: column;
+  }
+  .subContact {
+    gap: .2rem;
+    & img {
+      max-width: 100px;
+    }
+    & span {
+      font-size: .8rem;
+      position: relative;
+      top: -1.8rem;
+    }
+  }
+  .subName {
+    display: none;
+  }
+  .mobileLogo {
+    display: flex;
+    place-self: end;
+    margin-top: 3rem;
+    & img {
+      width: 5rem;
+    }
+  }
+  .mobileImg {
+    width: 100% !important;
+    object-fit: cover;
+  }
+
 }

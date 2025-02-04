@@ -28,3 +28,21 @@ const useWindowWidth = (): number => {
 }
 
 export default useWindowWidth;
+
+
+/* 
+import useWindowWidth from "@/hooks/useWindowWidth";
+
+ export default function Home() {
+  
+  const width = useWindowWidth();
+  const breakPoint = 768;
+
+  return (
+    <>
+      {width < breakPoint ? <div>'Mobile'</div> : <div>'Desktop'</div>}
+    </>
+  ); 
+};
+
+*/
