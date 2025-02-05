@@ -15,4 +15,5 @@ export interface DataType {
 export interface TextArray {
   img: string;
   email: string;
+  bgColor: string;
 }
