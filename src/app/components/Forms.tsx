@@ -10,11 +10,10 @@ interface FormData {
 }
 
 interface FormsProps {
-  onSubmit: (data: FormData) => void; // Callback to handle form submission
-  initialData?: FormData; // Optional initial data to pre-fill the form
+  onSubmit: (data: FormData) => void;
+  initialData?: FormData;
 }
 
-// Yup schema for validation
 const validationSchema = Yup.object({
   name: Yup.string()
     .required("Name is required.")
@@ -45,16 +44,27 @@ const Forms: React.FC<FormsProps> = ({ onSubmit, initialData }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the default form submission
+
     try {
-      // Validate the form data against the Yup schema
+      // Validate the form data
       await validationSchema.validate(formData, { abortEarly: false });
-      
-      // If validation passes, call the onSubmit callback
-      onSubmit(formData);
-      setErrors({}); // Reset any previous errors
+
+      // Send data if validation passes
+      const response = await fetch("http://localhost:3001/postMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData), // Pass formData
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("Message sent successfully:", responseData);
+        onSubmit(formData); // Pass validated formData to onSubmit
+      }
     } catch (err: any) {
       // If validation fails, update errors state
       const validationErrors: { [key: string]: string } = {};

@@ -8,6 +8,7 @@ import CardMobile from "./components/CardMobile";
 import { allData } from "./data";
 import { DataType } from "./types/type";
 import useWindowWidth from "@/app/hooks/useWindowWidth"
+import Link from "next/link";
 
   
 export default function Home() {
@@ -49,8 +50,10 @@ export default function Home() {
     <section className={styles.fp}>
       <div>
         <div className={styles.centered}>
-          <Image priority src={"/logo/logo-final.png"} alt="" width={100} height={100} className={styles.logo}/>
-            <section className={styles.cards}>
+          <Link href={"/"}  className={styles.logo}>
+            <Image priority src={"/logo/logo-final.png"} alt="" width={1000} height={1000}/>
+          </Link>
+          <section className={styles.cards}>
             {myData.length > 0 ? (
               myData.map((item: DataType) => (
                 <div key={item._id}>
@@ -60,8 +63,7 @@ export default function Home() {
               ) : (
                 <p>No data available</p>
               )}
-
-            </section>
+          </section>
           <span>And yet... more to come</span>
         </div>
       </div>

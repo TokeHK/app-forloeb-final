@@ -63,11 +63,12 @@ const Page: React.FC = () => {
 
   return (
     <div className={styles.subpage} style={{ backgroundColor: `${data.bg}` }}>
+      
       <div className={styles.subpageCard}>
         {width < breakPoint ?
-          <Image priority className={styles.mobileImg} src={`/${data.frontMobileImg}`} alt={data.desc} width={100} height={100} />
+          <Image priority className={styles.mobileImg} src={`/${data.frontMobileImg}`} alt={data.desc} width={1000} height={1000} />
           :
-          <Image priority src={`/${data.subpageImg}`} alt={data.desc} width={100} height={100} />
+          <Image priority src={`/${data.subpageImg}`} alt={data.desc} width={1000} height={1000} />
         }
         <div>
           <h1>{data.header}</h1>
@@ -82,7 +83,7 @@ const Page: React.FC = () => {
                   id={`contact-${data._id}`}
                   onClick={() => handleOpenModal(item)}
                 >
-                  <Image src={`/${item.img}`} alt={item.email} width={200} height={200} />
+                  <Image src={`/${item.img}`} alt={item.email} width={400} height={400} />
                   <span>{item.email}</span>
                 </li>
               ))}
@@ -95,7 +96,7 @@ const Page: React.FC = () => {
 
         {width < breakPoint ?
           <Link href={"/"} className={styles.mobileLogo}>
-            <Image src={`/${data.logo}`} alt={data.desc} width={100} height={100} />
+            <Image src={`/${data.logo}`} alt={data.desc} width={1000} height={1000} />
           </Link>
           :
           <>{/* empty desktop */}</>
